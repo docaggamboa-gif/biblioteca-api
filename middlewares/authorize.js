@@ -5,12 +5,24 @@ const authorize = (requiredPermission) => {
                 message: "Usuario no autenticado"
             });
         }
+
         const permisos = req.user.permisos || [];
-        if (!permisos.includes(requiredPermission)) {
+        console.log(permisos);
+        console.log(requiredPermission);
+        const tienePermiso = requiredPermission.some((permiso) =>
+            permisos.includes(permiso)
+        );
+        if (!tienePermiso) {
             return res.status(403).json({
                 message: "No tiene permisos para realizar esta acción"
             });
         }
+        /*
+        if (!permisos.includes(requiredPermission)) {
+            return res.status(403).json({
+                message: "No tiene permisos para realizar esta acción"
+            });
+        }*/
         next();
     };
 };

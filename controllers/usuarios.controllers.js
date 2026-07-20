@@ -10,14 +10,12 @@ exports.getById = async(req,res)=>{
     res.json(usuario);
 };
 
-exports.create = async(req,res)=>{
+exports.create = async(req,res,next)=>{
     try{
         const usuario = await usuarioService.create(req.body);
         res.status(201).json(usuario);
     }catch(error){
-        res.status(500).json({
-            mensaje:error.message
-        });
+        next();
     }
 };
 

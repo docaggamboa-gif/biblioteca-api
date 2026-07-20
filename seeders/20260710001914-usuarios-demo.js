@@ -17,11 +17,11 @@ module.exports = {
     [
     {
     nombre:"Juan",
-    correo:"juan1234@gmail.com"
+    correo:"juan12345@gmail.com"
     },
     {
     nombre:"María",
-    correo:"maria3456@gmail.com"
+    correo:"maria34567@gmail.com"
     }
     ]
     );

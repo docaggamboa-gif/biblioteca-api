@@ -12,6 +12,10 @@ const Permiso = sequelize.define("Permiso", {
     type: DataTypes.STRING,
     allowNull: true,
   },
-});
+},{
+    tableName: 'permisos',
+    timestamps: false,
+  }
+);
 
 module.exports = Permiso;

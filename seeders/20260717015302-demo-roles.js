@@ -1,5 +1,4 @@
 'use strict';
-const bcrypt = require('bcrypt');
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
@@ -13,16 +12,22 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-   const password=await bcrypt.hash('Admin123*',10);
-   await queryInterface.bulkInsert('Users',[{
-     username:'admin',
-     email: 'admin@biblioteca.com',
-     password:password,
-     role: 'admin',
-     createdAt: new Date(),
-     updatedAt: new Date()
-   }
-   ]);
+   await queryInterface.bulkInsert("roles", [
+      {
+        id: 1,
+        nombre: "Administrador",
+        descripcion: "Acceso total al sistema",
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        id: 2,
+        nombre: "Usuario",
+        descripcion: "Usuario estándar",
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+    ]);
   },
 
   async down (queryInterface, Sequelize) {
@@ -32,8 +37,6 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-    await queryInterface.bulkDelete('Users',{
-      username:'admin'
-    })
+      await queryInterface.bulkDelete("roles", null, {});
   }
 };

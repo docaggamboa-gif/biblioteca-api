@@ -9,15 +9,22 @@ const usuarioRoutes=require('./routes/usuarios.routes');
 const libroRoutes=require('./routes/libro.routes');
 const prestamoRoutes=require('./routes/prestamo.routes');
 const authRoutes=require('./routes/auth.routes');
+const rolRoutes = require("./routes/rol.routes");
+
+const handleError = require("./middlewares/handleError");
+
 
 // Middleware para leer JSON
 app.use(express.json());
 app.use(logger.logger);
+app.use(handleError);
+
 
 app.use('/usuarios',usuarioRoutes);
 app.use('/libros',libroRoutes);
 app.use('/prestamos',prestamoRoutes);
 app.use('/auth',authRoutes);
+app.use("/roles", rolRoutes);
 app.listen(PORT, () => {
 console.log(`Servidor ejecutándose en http://localhost:${PORT}`);
 });
