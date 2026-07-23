@@ -7,8 +7,7 @@ const authorize = (requiredPermission) => {
         }
 
         const permisos = req.user.permisos || [];
-        console.log(permisos);
-        console.log(requiredPermission);
+
         const tienePermiso = requiredPermission.some((permiso) =>
             permisos.includes(permiso)
         );
