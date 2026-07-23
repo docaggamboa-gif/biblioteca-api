@@ -2,7 +2,8 @@ require('dotenv').config();
 const express=require('express')
 const logger=require('./middlewares/logger')
 const app = express();
-
+const corsMiddleware = require("./middlewares/corsMiddleware");
+app.use(corsMiddleware);
 
 const PORT = 3000;
 const pool = require('./config/db');

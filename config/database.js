@@ -9,7 +9,13 @@ process.env.DB_PASSWORD, // Contraseña
 {
 host: process.env.DB_HOST,
 dialect: process.env.DB_DIALECT,
-logging: false
+logging: false,
+dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false
+      }
+    }
 }
 );
 module.exports = sequelize;
