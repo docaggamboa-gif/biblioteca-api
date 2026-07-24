@@ -10,8 +10,3 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 EXPOSE 3000
 CMD ["npm","start"]
-Paso 6. Crear .dockerignore
-node_modules
-.git
-.env
-npm-debug.log
